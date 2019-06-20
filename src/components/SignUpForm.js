@@ -4,14 +4,13 @@ import {
   Row,
   Col,
   Card,
-  CardTitle,
-  CardText,
   Button,
   Form,
   FormGroup,
   Input,
   Label
 } from "reactstrap";
+import iPhone from "../images/iphone-png.png";
 
 const SignUpForm = props => {
   return (
@@ -22,9 +21,7 @@ const SignUpForm = props => {
           style={styles.signUpForm}
         >
           <Col className="h-100" md="4">
-            <Card className="h-100" body>
-              Hi
-            </Card>
+            <img src={iPhone} style={styles.iphoneImage} />
           </Col>
           <Col className="h-100" md="4">
             <Card className="h-100" body>
@@ -39,7 +36,21 @@ const SignUpForm = props => {
                   <Input />
                 </FormGroup>
                 <small>Already registered? Sign In Here</small>
-                <Button className="mx-auto d-block mt-3">Sign Up</Button>
+                <Button
+                  color="primary"
+                  size="sm"
+                  className="mx-auto d-block mt-3 w-100"
+                >
+                  Sign Up
+                </Button>
+                <hr />
+                <div className="w-75 text-center mx-auto">
+                  <p>
+                    By signing up, you agree to our, <strong>Terms</strong>,{" "}
+                    <strong>Data Policy</strong> and{" "}
+                    <strong>Cookies Policy</strong>.
+                  </p>
+                </div>
               </Form>
             </Card>
           </Col>
@@ -58,6 +69,12 @@ const styles = {
   },
   formContainer: {
     position: "relative"
+  },
+  iphoneImage: {
+    width: "65%",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto"
   }
 };
 
