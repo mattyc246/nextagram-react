@@ -9,12 +9,17 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: true,
+      currentUser: false,
       signUpFormData: {
         username: "",
         email: "",
         password: "",
-        confirmPassword: ""
+        confirmPassword: "",
+        validPassword: false,
+        validUsername: false,
+        validEmail: false,
+        canSubmit: false,
+        matchingPassword: false
       },
       users: []
     };
@@ -33,10 +38,28 @@ class App extends React.Component {
   };
 
   handleSignUpFormInput = e => {
-    const newSignUpData = {
+    let newSignUpData = {
       ...this.state.signUpFormData,
       [e.target.name]: e.target.value
     };
+    const { username, password, confirmPassword, email } = newSignUpData;
+    if (username && password && confirmPassword && email) {
+      newSignUpData = {
+        ...newSignUpData,
+        canSubmit: true
+      };
+    }
+    if (password === confirmPassword) {
+      newSignUpData = {
+        ...newSignUpData,
+        matchingPassword: true
+      };
+    } else {
+      newSignUpData = {
+        ...newSignUpData,
+        matchingPassword: false
+      };
+    }
     this.setState({ signUpFormData: newSignUpData });
   };
 
