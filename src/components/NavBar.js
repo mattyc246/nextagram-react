@@ -30,7 +30,13 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="transparent" className="border-bottom" light expand="md">
+        <Navbar
+          color="transparent"
+          className="border-bottom"
+          light
+          expand="md"
+          fixed="top"
+        >
           <NavbarBrand className="alt-font">Instagram</NavbarBrand>
           <NavbarToggler onClick={() => this.handleDropdown()} />
           <Collapse isOpen={this.state.isOpen} navbar>
