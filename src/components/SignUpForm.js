@@ -13,6 +13,7 @@ import {
 import iPhone from "../images/iphone-png.png";
 
 const SignUpForm = props => {
+  const { username, email, password, confirmPassword } = props.formData;
   return (
     <>
       <Container fluid className="h-100 mb-3" style={styles.formContainer}>
@@ -26,14 +27,34 @@ const SignUpForm = props => {
           <Col md="4">
             <Card className="h-100" body>
               <h4 className="text-center">Sign Up</h4>
-              <Form>
+              <Form
+                onSubmit={e => {
+                  props.handleSubmit(e);
+                }}
+              >
                 <FormGroup>
                   <Label>Username</Label>
-                  <Input type="text" name="username" placeholder="Username" />
+                  <Input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={username}
+                    onChange={e => {
+                      props.handleInput(e);
+                    }}
+                  />
                 </FormGroup>
                 <FormGroup>
                   <Label>Email</Label>
-                  <Input type="email" name="email" placeholder="Email" />
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={e => {
+                      props.handleInput(e);
+                    }}
+                  />
                 </FormGroup>
                 <FormGroup>
                   <Label>Password</Label>
@@ -41,6 +62,10 @@ const SignUpForm = props => {
                     type="password"
                     name="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={e => {
+                      props.handleInput(e);
+                    }}
                   />
                 </FormGroup>
                 <FormGroup>
@@ -49,6 +74,10 @@ const SignUpForm = props => {
                     type="password"
                     name="confirmPassword"
                     placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={e => {
+                      props.handleInput(e);
+                    }}
                   />
                 </FormGroup>
                 <small>Already registered? Sign In Here</small>
@@ -56,6 +85,7 @@ const SignUpForm = props => {
                   color="primary"
                   size="sm"
                   className="mx-auto d-block mt-3 w-100"
+                  type="submit"
                 >
                   Sign Up
                 </Button>

@@ -31,11 +31,11 @@ class NavBar extends React.Component {
     return (
       <div>
         <Navbar
-          color="transparent"
           className="border-bottom"
           light
           expand="md"
           fixed="top"
+          style={styles.navBar}
         >
           <NavbarBrand className="alt-font">Instagram</NavbarBrand>
           <NavbarToggler onClick={() => this.handleDropdown()} />
@@ -74,4 +74,9 @@ class NavBar extends React.Component {
   }
 }
 
+const styles = {
+  navBar: {
+    backgroundColor: "rgba(255,255,255,0.5)"
+  }
+};
 export default NavBar;
