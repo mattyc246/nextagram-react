@@ -41,17 +41,23 @@ class NavBar extends React.Component {
               <NavItem>
                 <NavLink href="/">Components</NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <i class="far fa-user-circle" />
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>View Profile</DropdownItem>
-                  <DropdownItem>View Settings</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Logout</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+              {this.props.currentUser ? (
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    <i class="far fa-user-circle" />
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>View Profile</DropdownItem>
+                    <DropdownItem>View Settings</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Logout</DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              ) : (
+                <NavItem>
+                  <NavLink href="/">Sign In</NavLink>
+                </NavItem>
+              )}
             </Nav>
           </Collapse>
         </Navbar>
