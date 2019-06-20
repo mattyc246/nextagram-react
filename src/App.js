@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import NewsFeed from "./components/NewsFeed";
@@ -20,9 +19,6 @@ class App extends React.Component {
   }
 
   handleSignUpFormInput = e => {
-    console.log(e.target);
-    console.log(e.target.name);
-
     const newSignUpData = {
       ...this.state.signUpFormData,
       [e.target.name]: e.target.value
@@ -53,9 +49,11 @@ class App extends React.Component {
     const { currentUser, signUpFormData } = this.state;
     return (
       <>
-        <NavBar currentUser={currentUser} />
         {currentUser ? (
-          <NewsFeed />
+          <>
+            <NavBar currentUser={currentUser} />
+            <NewsFeed />
+          </>
         ) : (
           <SignUpForm
             formData={signUpFormData}

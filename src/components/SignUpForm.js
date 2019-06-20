@@ -8,7 +8,8 @@ import {
   Form,
   FormGroup,
   Input,
-  Label
+  Label,
+  CardSubtitle
 } from "reactstrap";
 import iPhone from "../images/iphone-png.png";
 
@@ -16,7 +17,7 @@ const SignUpForm = props => {
   const { username, email, password, confirmPassword } = props.formData;
   return (
     <>
-      <Container fluid className="h-100 mb-3" style={styles.formContainer}>
+      <Container fluid className="h-100" style={styles.formContainer}>
         <Row
           className="justify-content-center w-100 h-75"
           style={styles.signUpForm}
@@ -26,7 +27,10 @@ const SignUpForm = props => {
           </Col>
           <Col md="4">
             <Card className="h-100" body>
-              <h4 className="text-center">Sign Up</h4>
+              <h2 className="text-center alt-font">Instagram</h2>
+              <CardSubtitle className="mt-2 mb-2 text-muted text-center">
+                Sign Up to see photos and videos from your friends.
+              </CardSubtitle>
               <Form
                 onSubmit={e => {
                   props.handleSubmit(e);
@@ -80,7 +84,9 @@ const SignUpForm = props => {
                     }}
                   />
                 </FormGroup>
-                <small>Already registered? Sign In Here</small>
+                <small>
+                  Already registered? <a href="/">Sign In Here</a>
+                </small>
                 <Button
                   color="primary"
                   size="sm"
@@ -109,15 +115,14 @@ const SignUpForm = props => {
 const styles = {
   signUpForm: {
     position: "absolute",
-    top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)"
+    transform: "translate(-50%)"
   },
   formContainer: {
     position: "relative"
   },
   iphoneImage: {
-    width: "75%",
+    width: "85%",
     display: "block",
     marginLeft: "auto",
     marginRight: "auto"
