@@ -15,25 +15,41 @@ import iPhone from "../images/iphone-png.png";
 const SignUpForm = props => {
   return (
     <>
-      <Container fluid className="h-100" style={styles.formContainer}>
+      <Container fluid className="h-100 mb-3" style={styles.formContainer}>
         <Row
           className="justify-content-center w-100 h-75"
           style={styles.signUpForm}
         >
-          <Col className="h-100" md="4">
+          <Col md="4">
             <img src={iPhone} style={styles.iphoneImage} />
           </Col>
-          <Col className="h-100" md="4">
+          <Col md="4">
             <Card className="h-100" body>
               <h4 className="text-center">Sign Up</h4>
               <Form>
                 <FormGroup>
                   <Label>Username</Label>
-                  <Input />
+                  <Input type="text" name="username" placeholder="Username" />
+                </FormGroup>
+                <FormGroup>
+                  <Label>Email</Label>
+                  <Input type="email" name="email" placeholder="Email" />
                 </FormGroup>
                 <FormGroup>
                   <Label>Password</Label>
-                  <Input />
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <Label>Confirm Password</Label>
+                  <Input
+                    type="password"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"
+                  />
                 </FormGroup>
                 <small>Already registered? Sign In Here</small>
                 <Button
@@ -71,7 +87,7 @@ const styles = {
     position: "relative"
   },
   iphoneImage: {
-    width: "65%",
+    width: "75%",
     display: "block",
     marginLeft: "auto",
     marginRight: "auto"
