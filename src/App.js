@@ -3,20 +3,34 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import NewsFeed from "./components/NewsFeed";
 import SignUpForm from "./components/SignUpForm";
+import Axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null,
+      currentUser: true,
       signUpFormData: {
         username: "",
         email: "",
         password: "",
         confirmPassword: ""
-      }
+      },
+      users: []
     };
   }
+
+  componentDidMount = () => {
+    Axios.get("https://insta.nextacademy.com/api/v1/users")
+      .then(result => {
+        this.setState({
+          users: result.data
+        });
+      })
+      .catch(error => {
+        console.log(`Error: ${error}`);
+      });
+  };
 
   handleSignUpFormInput = e => {
     const newSignUpData = {
@@ -46,13 +60,13 @@ class App extends React.Component {
   };
 
   render() {
-    const { currentUser, signUpFormData } = this.state;
+    const { currentUser, signUpFormData, users } = this.state;
     return (
       <>
         {currentUser ? (
           <>
             <NavBar currentUser={currentUser} />
-            <NewsFeed />
+            <NewsFeed users={users} />
           </>
         ) : (
           <SignUpForm

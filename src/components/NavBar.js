@@ -51,7 +51,7 @@ class NavBar extends React.Component {
                   </NavItem>
                   <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
-                      <i class="far fa-user-circle" />
+                      <i className="far fa-user-circle" />
                     </DropdownToggle>
                     <DropdownMenu right>
                       <DropdownItem>View Profile</DropdownItem>
