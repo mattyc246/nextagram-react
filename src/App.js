@@ -1,8 +1,5 @@
 import React from "react";
 import "./App.css";
-import NavBar from "./components/NavBar";
-import NewsFeed from "./components/NewsFeed";
-import SignUpForm from "./components/SignUpForm";
 import Axios from "axios";
 import { Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -28,7 +25,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { currentUser, signUpFormData, users } = this.state;
+    const { users } = this.state;
     return (
       <>
         <Route
