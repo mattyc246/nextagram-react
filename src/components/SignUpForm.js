@@ -9,12 +9,20 @@ import {
   FormGroup,
   Input,
   Label,
-  CardSubtitle
+  CardSubtitle,
+  FormFeedback
 } from "reactstrap";
 import iPhone from "../images/iphone-png.png";
 
 const SignUpForm = props => {
-  const { username, email, password, confirmPassword } = props.formData;
+  const {
+    username,
+    email,
+    password,
+    confirmPassword,
+    canSubmit,
+    matchingPassword
+  } = props.formData;
   return (
     <>
       <Container fluid className="h-100" style={styles.formContainer}>
@@ -82,7 +90,23 @@ const SignUpForm = props => {
                     onChange={e => {
                       props.handleInput(e);
                     }}
+                    // valid={false}
+                    // invalid={true}
+                    {...(password && confirmPassword
+                      ? {
+                          ...(matchingPassword
+                            ? { valid: true }
+                            : { invalid: true })
+                        }
+                      : null)}
                   />
+                  <FormFeedback
+                    {...(matchingPassword
+                      ? { valid: true }
+                      : { invalid: true })}
+                  >
+                    {matchingPassword ? "" : "Password doesn't match"}
+                  </FormFeedback>
                 </FormGroup>
                 <small>
                   Already registered? <a href="/">Sign In Here</a>
@@ -90,7 +114,9 @@ const SignUpForm = props => {
                 <Button
                   color="primary"
                   size="sm"
-                  className="mx-auto d-block mt-3 w-100"
+                  className={`mx-auto d-block mt-3 w-100 ${
+                    canSubmit ? " " : "disabled"
+                  }`}
                   type="submit"
                 >
                   Sign Up
