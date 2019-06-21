@@ -28,6 +28,7 @@ class NavBar extends React.Component {
   };
 
   render() {
+    const { currentUser, handleLogout } = this.props;
     return (
       <div>
         <Navbar
@@ -41,7 +42,7 @@ class NavBar extends React.Component {
           <NavbarToggler onClick={() => this.handleDropdown()} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              {this.props.currentUser ? (
+              {currentUser ? (
                 <>
                   <NavItem>
                     <NavLink href="/">News Feed</NavLink>
@@ -57,7 +58,13 @@ class NavBar extends React.Component {
                       <DropdownItem>View Profile</DropdownItem>
                       <DropdownItem>View Settings</DropdownItem>
                       <DropdownItem divider />
-                      <DropdownItem>Logout</DropdownItem>
+                      <DropdownItem
+                        onClick={() => {
+                          handleLogout();
+                        }}
+                      >
+                        Logout
+                      </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </>
