@@ -13,6 +13,7 @@ import {
   FormFeedback
 } from "reactstrap";
 import iPhone from "../images/iphone-png.png";
+import SignInModal from "./SignInModal";
 
 const SignUpForm = props => {
   const {
@@ -109,7 +110,11 @@ const SignUpForm = props => {
                   </FormFeedback>
                 </FormGroup>
                 <small>
-                  Already registered? <a href="/">Sign In Here</a>
+                  Already registered?{" "}
+                  <SignInModal
+                    buttonLabel={"Sign in here"}
+                    handleLogin={props.handleLogin}
+                  />
                 </small>
                 <Button
                   color="primary"

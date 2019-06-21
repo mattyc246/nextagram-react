@@ -89,6 +89,27 @@ class HomePage extends React.Component {
       });
   };
 
+  handleLogin = (email, password) => {
+    Axios({
+      method: "POST",
+      url: "https://insta.nextacademy.com/api/v1/login",
+      data: {
+        email: email,
+        password: password
+      }
+    })
+      .then(result => {
+        let jwt = result.data.auth_token;
+        let newUser = JSON.stringify(result.data.user);
+        localStorage.setItem("JWT", jwt);
+        localStorage.setItem("userInfo", newUser);
+        this.setState({ currentUser: newUser });
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+  };
+
   handleLogout = () => {
     localStorage.removeItem("JWT");
     localStorage.removeItem("userInfo");
@@ -115,6 +136,7 @@ class HomePage extends React.Component {
             formData={signUpFormData}
             handleInput={this.handleSignUpFormInput}
             handleSubmit={this.handleSignUpSubmit}
+            handleLogin={this.handleLogin}
           />
         )}
       </>
